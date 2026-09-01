@@ -1,5 +1,7 @@
 # Klimasensor-firmware
 
+[![CI](https://github.com/SlambertDK/klimasensor-firmware/actions/workflows/ci.yml/badge.svg)](https://github.com/SlambertDK/klimasensor-firmware/actions/workflows/ci.yml)
+
 Batteridrevet ESP32-firmware der måler **temperatur, luftfugtighed, partikler
 (PM1.0/PM2.5/PM4.0/PM10), lys og acceleration** og sender data til en server
 over mobilnettet (Quectel BG96) med server-konfigurerbart interval, offline-
