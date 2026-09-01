@@ -1,7 +1,7 @@
 # Klimasensor-firmware — designspecifikation
 
 **Dato:** 2026-09-01
-**Status:** Godkendt af Henrik (henla@energinet.dk)
+**Status:** Godkendt
 
 ## 1. Formål
 
