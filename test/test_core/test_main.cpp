@@ -26,6 +26,10 @@ void test_payload_marks_invalid_ts();
 void test_parse_full_response();
 void test_parse_minimal_response();
 void test_parse_garbage_fails();
+// test_atparser.cpp
+void test_qntp_parses_utc_epoch();
+void test_qntp_zero_offset_and_error();
+void test_qhttp_result_parses();
 // test_cycle.cpp
 void test_cycle_measures_and_uploads();
 void test_cycle_data_survives_net_failure();
@@ -65,6 +69,9 @@ int main() {
   RUN_TEST(test_parse_full_response);
   RUN_TEST(test_parse_minimal_response);
   RUN_TEST(test_parse_garbage_fails);
+  RUN_TEST(test_qntp_parses_utc_epoch);
+  RUN_TEST(test_qntp_zero_offset_and_error);
+  RUN_TEST(test_qhttp_result_parses);
   RUN_TEST(test_cycle_measures_and_uploads);
   RUN_TEST(test_cycle_data_survives_net_failure);
   RUN_TEST(test_cycle_upload_only_when_due);
