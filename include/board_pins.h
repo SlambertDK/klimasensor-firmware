@@ -1,6 +1,11 @@
 // board_pins.h — AL hardware-afhængig konfiguration samles her.
 // Pin-numrene er PLACEHOLDERS: udfyld dem, når hardwaren/skemaet er ved hånden.
 // Alt kan overstyres fra platformio.ini med -D<NAVN>=<værdi>.
+//
+// *** ADVARSEL (ESP32-PICO-D4 / pico32) ***
+// GPIO 6, 7, 8, 11, 16 og 17 er forbundet til modulets INDBYGGEDE FLASH og må
+// aldrig bruges som almindelige GPIO'er — det giver flash-korruption, crashes
+// og mystiske partitionsfejl. Alle defaults herunder holder sig fra dem.
 #pragma once
 
 // ---------- I2C-bus (SHTC3 0x70, VEML6040 0x10, LIS2DH12, SPS30 0x69) ----------
@@ -28,10 +33,10 @@
 
 // ---------- BG96-modem ----------
 #ifndef PIN_BG96_TX
-#define PIN_BG96_TX 17    // ESP32 TX -> BG96 RX
+#define PIN_BG96_TX 25    // ESP32 TX -> BG96 RX (IKKE 16/17 på PICO-D4!)
 #endif
 #ifndef PIN_BG96_RX
-#define PIN_BG96_RX 16    // ESP32 RX <- BG96 TX
+#define PIN_BG96_RX 26    // ESP32 RX <- BG96 TX (IKKE 16/17 på PICO-D4!)
 #endif
 #ifndef PIN_BG96_PWRKEY
 #define PIN_BG96_PWRKEY 4

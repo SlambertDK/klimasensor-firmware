@@ -26,11 +26,30 @@ API-token sættes samme sted eller via `-D`-flag i `platformio.ini`.
 
 ## Byg og flash
 
+Hardwaren er et **ESP32-PICO-D4-board (Pico32)** — brug `pico32`-miljøet
+(default). `esp32`-miljøet findes til generiske devkits.
+
 ```bash
-pio run -e esp32              # byg
-pio run -e esp32 -t upload    # flash via kabel
-pio device monitor            # seriel log (115200 baud)
+pio run -e pico32              # byg
+pio run -e pico32 -t upload    # flash via kabel
+pio device monitor             # seriel log (115200 baud)
 ```
+
+**Første flash / partitionsproblemer:** Har boardet tidligere været flashet
+med et andet partitionslayout (fx Arduino IDE's default), skal flashen slettes
+én gang, ellers kan gammel partitionstabel/filsystem give forvirrende fejl:
+
+```bash
+pio run -e pico32 -t erase
+```
+
+Derefter `pio run -e pico32 -t upload` igen. (Sletning fjerner også gemte
+målinger og NVS-konfiguration — kun relevant ved opsætning.)
+
+**⚠️ PICO-D4-pins:** GPIO **6, 7, 8, 11, 16 og 17** er forbundet til modulets
+indbyggede flash og må aldrig bruges til sensorer/modem — det giver crashes og
+flash-korruption, der kan ligne partitionsfejl. Alle defaults i
+`include/board_pins.h` undgår dem (BG96-UART ligger på 25/26).
 
 Unit-tests (kører på udviklingsmaskinen, ingen hardware nødvendig):
 

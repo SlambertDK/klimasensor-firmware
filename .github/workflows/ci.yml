@@ -29,5 +29,8 @@ jobs:
       - name: Unit tests (native)
         run: pio test -e native
 
+      - name: Build firmware (pico32)
+        run: pio run -e pico32
+
       - name: Build firmware (esp32)
         run: pio run -e esp32
